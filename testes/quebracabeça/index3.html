@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quebra-Cabeça com Imagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #puzzle-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+            border: 2px solid #000;
+            position: relative;
+        }
+
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            background-size: 400px 400px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            cursor: pointer;
+            position: absolute;
+            transition: top 0.3s, left 0.3s;
+        }
+    </style>
+    <h1>Quebra-Cabeça com Imagem</h1>
+    <div id="puzzle-container"></div>
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const puzzleContainer = document.getElementById("puzzle-container");
+            const pieceSize = 100; // Tamanho de cada peça
+            const imagePath = "file.jpg"; // Caminho da imagem
+
+            // Cria as peças do quebra-cabeça
+            function createPuzzle() {
+                for (let row = 0; row < 4; row++) {
+                    for (let col = 0; col < 4; col++) {
+                        const piece = document.createElement("div");
+                        piece.className = "puzzle-piece";
+                        piece.style.backgroundImage = `url('${imagePath}')`;
+                        piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
+                        piece.dataset.row = row;
+                        piece.dataset.col = col;
+                        piece.style.top = `${row * pieceSize}px`;
+                        piece.style.left = `${col * pieceSize}px`;
+                        piece.draggable = true;
+                        puzzleContainer.appendChild(piece);
+                    }
+                }
+            }
+
+            // Embaralha as peças
+            function shufflePuzzle() {
+                const pieces = Array.from(puzzleContainer.children);
+                pieces.sort(() => Math.random() - 0.5);
+                pieces.forEach((piece, index) => {
+                    const row = Math.floor(index / 4);
+                    const col = index % 4;
+                    piece.style.top = `${row * pieceSize}px`;
+                    piece.style.left = `${col * pieceSize}px`;
+                });
+            }
+
+            // Adiciona eventos de drag and drop
+            function addDragAndDrop() {
+                let draggedPiece = null;
+
+                puzzleContainer.addEventListener("dragstart", function(event) {
+                    draggedPiece = event.target;
+                    event.dataTransfer.setData("text/plain", ""); // Necessário para o Firefox
+                });
+
+                puzzleContainer.addEventListener("dragover", function(event) {
+                    event.preventDefault();
+                });
+
+                puzzleContainer.addEventListener("drop", function(event) {
+                    event.preventDefault();
+                    if (draggedPiece && event.target.classList.contains("puzzle-piece")) {
+                        const tempTop = draggedPiece.style.top;
+                        const tempLeft = draggedPiece.style.left;
+                        draggedPiece.style.top = event.target.style.top;
+                        draggedPiece.style.left = event.target.style.left;
+                        event.target.style.top = tempTop;
+                        event.target.style.left = tempLeft;
+                    }
+                });
+            }
+
+            createPuzzle();
+            shufflePuzzle();
+            addDragAndDrop();
+        });
+    </script>
+</body>
+</html>

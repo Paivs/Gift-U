@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quebra-Cabeça com Imagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+#puzzle-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    border: 2px solid #000;
+}
+
+.puzzle-piece {
+    width: 100px;
+    height: 100px;
+    background-size: 400px 400px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+    </style>
+    <h1>Quebra-Cabeça com Imagem</h1>
+    <div id="puzzle-container"></div>
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const puzzleContainer = document.getElementById("puzzle-container");
+    const pieceSize = 100; // Tamanho de cada peça
+    const imagePath = "file.jpg"; // Caminho da imagem
+
+    // Cria as peças do quebra-cabeça
+    function createPuzzle() {
+        for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 4; col++) {
+                const piece = document.createElement("div");
+                piece.className = "puzzle-piece";
+                piece.style.backgroundImage = `url('${imagePath}')`;
+                piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
+                piece.dataset.row = row;
+                piece.dataset.col = col;
+                puzzleContainer.appendChild(piece);
+            }
+        }
+    }
+
+    // Embaralha as peças
+    function shufflePuzzle() {
+        const pieces = Array.from(puzzleContainer.children);
+        pieces.sort(() => Math.random() - 0.5);
+        puzzleContainer.innerHTML = "";
+        pieces.forEach(piece => puzzleContainer.appendChild(piece));
+    }
+
+    createPuzzle();
+    shufflePuzzle();
+});
+    </script>
+</body>
+</html>
