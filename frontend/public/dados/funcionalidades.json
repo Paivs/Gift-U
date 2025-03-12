@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "titulo": "Quebra Cabeça",
+    "descricao": "Encontre todos os itens escondidos na casa do seu amigo(a) e ganhe pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/quebra-cabeca.png",
+    "cor": "#ffa5a5",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 1,
+    "titulo": "Balao",
+    "descricao": "Estoure o balão e veja as mensagens!",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/balao.png",
+    "cor": "#9062ff",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 2,
+    "titulo": "Quiz",
+    "descricao": "Responda as perguntas corretamente e ganhe pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/quiz.png",
+    "cor": "#9062ff",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 3,
+    "titulo": "Jogue o dado",
+    "descricao": "Jogue o dado e mova sua peça no tabuleiro, ganhe pontos e complete o desafio",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/dado.png",
+    "cor": "#81a88d",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 4,
+    "titulo": "Jogo da memória",
+    "descricao": "Encontre os pares de cartas e ganhe pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/memoria.png",
+    "cor": "#909d79",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 5,
+    "titulo": "Clique",
+    "descricao": "Clique nas imagens para ganhar pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/clique.png",
+    "cor": "#d46b6b",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 6,
+    "titulo": "Complete a frase",
+    "descricao": "Complete as frases corretamente e ganhe pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/frase.png",
+    "cor": "#2e1b5b",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 7,
+    "titulo": "Caça ao Tesouro",
+    "descricao": "Encontre todos os itens escondidos na casa do seu amigo(a) e ganhe pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/quebra-cabeca.png",
+    "cor": "#ffa5a5",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 8,
+    "titulo": "Quiz",
+    "descricao": "Responda as perguntas corretamente e ganhe pontos",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/quiz.png",
+    "cor": "#9062ff",
+    "tags": ["divertido", "amigo"]
+  },
+  {
+    "id": 9,
+    "titulo": "Jogue o dado",
+    "descricao": "Jogue o dado e mova sua peça no tabuleiro, ganhe pontos e complete o desafio",
+    "selecionado": false,
+    "imagem": "/img/funcionalidades/dado.png",
+    "cor": "#81a88d",
+    "tags": ["divertido", "amigo"]
+  }
+]

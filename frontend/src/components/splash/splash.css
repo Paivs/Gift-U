@@ -1,0 +1,54 @@
+
+/* .efeito h1 {
+    font-family: monospace;
+    margin-inline: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: blur 3.5s forwards;
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(3px);
+    }
+    100% {
+        filter: blur(0);
+    }
+} */
+
+.hidden-splash {
+    opacity: 0;
+    display: none;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+}
+
+.visible-splash {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    overflow-y: hidden;
+}
+
+
+.typewritter p{
+    font-family: monospace;
+    margin-inline: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(62) forwards;
+}
+
+
+
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
