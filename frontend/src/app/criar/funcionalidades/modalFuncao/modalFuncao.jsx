@@ -35,14 +35,16 @@ export default function ModalFuncao({
               X
             </button>
             <div className="flex flex-col gap-2">
-              <h2 className="text-2xl">{funcionalidade.titulo}</h2>
+              <h2 className="text-2xl font-bold">{funcionalidade.titulo}</h2>
               <p className="text-lg">{funcionalidade.descricao}</p>
             </div>
-            <img
-              src={funcionalidade.imagem}
-              alt={funcionalidade.titulo}
-              className="rounded-lg max-h-[200px] w-auto h-auto"
-            />
+            <div className="flex items-center justify-center w-full h-auto">
+              <img
+                src={funcionalidade.imagem}
+                alt={funcionalidade.titulo}
+                className="rounded-lg max-w-[200px] w-full h-auto aspect-square"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,25 +1,11 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
 import "./splash.css";
 import Loader from "./loader/loader";
 
 export default function Splash() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 1750);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] w-full h-full bg-background ${
-        isLoaded ? "hidden-splash" : "visible-splash"
-      }`}
+      className={`fixed inset-0 z-[9999] w-full h-full bg-background`}
     >
       <div className="w-full h-full flex flex-col items-center justify-center">
         <div className="mb-8 text-center">

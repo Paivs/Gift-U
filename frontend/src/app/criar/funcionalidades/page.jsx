@@ -14,135 +14,186 @@ export default function Funcionalidades() {
   const router = useRouter();
 
   const { showNotification } = useNotification();
-  const { userData, updateUserData, addFuncionalidade, removeFuncionalidade  } = useMyContext();
+  const { userData, updateUserData, addFuncionalidade, removeFuncionalidade } =
+    useMyContext();
   const [notification, setNotification] = useState({
     message: "",
     type: "",
   });
-  const [funcionalidades, setFuncionalidades] = useState([]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const dados = Object.values(funcionalidadesDados).map((dado) => {
-        const funcionalidadeEncontrada = userData.funcionalidades.find((funcionalidade) => funcionalidade.id === dado.id);
-        if (funcionalidadeEncontrada) {
-          dado.selecionado = funcionalidadeEncontrada.selecionado;
-        }
-        return dado;
-      });
-
-      setFuncionalidades(Object.values(dados));
-    }
-
-    // setFuncionalidades(funcionalidadesDados);
-  }, []);
-
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
-
+  
+  const [filteredFuncionalidades, setFilteredFuncionalidades] = useState([]);
+  const [funcionalidadesSelecionadas, setFuncionalidadesSelecionadas] = useState([]);
   const [categorias, setCategorias] = useState([
     {
-      id: 1,
+      id: 0,
       titulo: "geral",
       descricao: "Todos",
+      valor: "geral",
       selecionado: true,
     },
     {
-      id: 2,
+      id: 1,
       titulo: "amor",
       descricao: "Aos apaixonados",
+      valor: "amor",
+      selecionado: false,
+    },
+    {
+      id: 2,
+      titulo: "jogos",
+      descricao: "Jogos",
+      valor: "jogo",
       selecionado: false,
     },
     {
       id: 3,
-      titulo: "jogos",
-      descricao: "Jogos",
-      selecionado: false,
-    },
-    {
-      id: 4,
       titulo: "aniversario",
       descricao: "Aniversário",
+      valor: "aniversario",
       selecionado: false,
     },
   ]);
   const [selecionado, setSelecionado] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Carrega as funcionalidades e marca as selecionadas
+  useEffect(() => {
+    const dados = Object.values(funcionalidadesDados).map((dado) => {
+      if (userData.funcionalidades) {
+        const funcionalidadeEncontrada = userData.funcionalidades.find(
+          (funcionalidade) => funcionalidade.id === dado.id
+        );
+        if (funcionalidadeEncontrada) {
+          dado.selecionado = funcionalidadeEncontrada.selecionado;
+        }
+      }
+      return dado;
+    });
+    setFuncionalidadesSelecionadas(dados);
+    setFilteredFuncionalidades(dados); // Inicialmente, todas as funcionalidades são exibidas
+  }, []);
+
+  // Filtra as funcionalidades com base na categoria selecionada
+  useEffect(() => {
+    // Verifica se "geral" está selecionado
+    const geralSelecionado = categorias.some((cat) => cat.valor === "geral" && cat.selecionado);
+  
+    if (geralSelecionado) {
+      // Se "geral" estiver selecionado, exibe todas as funcionalidades
+      setFilteredFuncionalidades(funcionalidadesSelecionadas);
+    } else {
+      // Filtra as funcionalidades com base nas categorias selecionadas
+      const categoriasSelecionadas = categorias
+        .filter((cat) => cat.selecionado)
+        .map((cat) => cat.valor);
+  
+      const filtradas = funcionalidadesSelecionadas.filter((func) =>
+        categoriasSelecionadas.some((cat) => func.tags.includes(cat))
+      );
+      setFilteredFuncionalidades(filtradas);
+    }
+  }, [categorias, funcionalidadesSelecionadas]);
+
+
+  // Abre o modal com as informações da funcionalidade
   function handleInfo(id) {
-    setSelecionado(funcionalidades[id]);
+    setSelecionado(funcionalidadesSelecionadas[id]);
     setIsModalOpen(true);
   }
 
+  // Marca/desmarca uma funcionalidade como selecionada
   function handleSelection(id, selecionar) {
-    setFuncionalidades((prevState) =>
+    setFuncionalidadesSelecionadas((prevState) =>
       prevState.map((item) =>
         item.id === id ? { ...item, selecionado: selecionar } : item
       )
     );
   }
 
+  // Adiciona/remove uma funcionalidade da lista de selecionadas
   function handleFunctionSelection(id) {
-    handleSelection(id, funcionalidades[id].selecionado ? false : true); // Marca como selecionado
-    if(funcionalidades[id].selecionado) {
+    handleSelection(id, !funcionalidadesSelecionadas[id].selecionado); // Inverte o estado de seleção
+    if (funcionalidadesSelecionadas[id].selecionado) {
       removeFuncionalidade(id);
     } else {
-      addFuncionalidade(funcionalidades[id]);
+      addFuncionalidade(funcionalidadesSelecionadas[id]);
     }
   }
 
+  // Remove uma funcionalidade da lista de selecionadas
   function handleItemRemove(id) {
-    handleSelection(id, false); // Marca como não selecionado
+    // Marca a funcionalidade como não selecionada no estado local
+    setFuncionalidadesSelecionadas((prevState) =>
+      prevState.map((item) =>
+        item.id === id ? { ...item, selecionado: false } : item
+      )
+    );
+  
+    // Remove a funcionalidade do contexto (userData)
     removeFuncionalidade(id);
   }
 
+  // Seleciona/deseleciona uma categoria
   function handleCategoriaClick(id) {
-    setCategorias((prevState) => ({
-      ...prevState,
-      [id - 1]: {
-        ...prevState[id - 1],
-        selecionado: !prevState[id - 1].selecionado,
-      },
-    }));
+    setCategorias((prevState) => {
+      // Cria um novo estado com as categorias atualizadas
+      const novasCategorias = prevState.map((cat) => {
+        if (id === 0) {
+          // Se for o "geral", marca apenas ele e desmarca os outros
+          return { ...cat, selecionado: cat.id === 0 };
+        } else {
+          // Se for outra categoria, desmarca o "geral" e inverte o estado da categoria clicada
+          if (cat.id === 0) {
+            return { ...cat, selecionado: false }; // Desmarca o "geral"
+          }
+          if (cat.id === id) {
+            return { ...cat, selecionado: !cat.selecionado }; // Inverte o estado da categoria clicada
+          }
+          return cat; // Mantém o estado das outras categorias
+        }
+      });
+  
+      // Verifica se todas as categorias estão desmarcadas
+      const todasDesmarcadas = novasCategorias.every((cat) => !cat.selecionado);
+  
+      // Se todas estiverem desmarcadas, seleciona o "geral" (categorias[0])
+      if (todasDesmarcadas) {
+        return novasCategorias.map((cat) =>
+          cat.id === 0 ? { ...cat, selecionado: true } : cat
+        );
+      }
+  
+      return novasCategorias;
+    });
   }
 
+  // Avança para a próxima etapa se pelo menos uma funcionalidade estiver selecionada
   function handleNextStep() {
-    const funcionalidadesSelecionadas = funcionalidades.filter(
-      (funcionalidade) => funcionalidade.selecionado
-    );
     if (funcionalidadesSelecionadas.length === 0) {
-      // setNotification({
-      //   message: "Selecione pelo menos uma funcionalidade",
-      //   type: "error",
-      // })
-
-      showNotification("Notificação 1", "success");
-      showNotification("Notificação 2", "warning");
-      showNotification("Notificação 3", "error");
-
+      showNotification("Selecione pelo menos uma funcionalidade", "error");
       return;
     }
-    router.push("/criar/personalizar");
+
+    if (typeof window !== "undefined") {
+      router.push("/criar/personalizar");
+    }
   }
 
   return (
     <>
-      {/* <Notification message={notification.message} setMessage={setNotification} type={notification.type}/> */}
-
       <ModalFuncao
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
         funcionalidade={selecionado}
       />
 
-      <section className="min-h-[93vh] container mx-auto px-8 flex flex-col justify-evenly">
-        {/* chamada */}
-        <div className="flex flex-col md:flex-row justify-between items-center my-8">
-          <div className="flex flex-col">
+      <section className="container mx-auto px-8 flex flex-col" >
+        {/* Chamada */}
+        <div className="flex flex-col md:flex-row justify-between items-center my-8 gap-2">
+          <div className="flex flex-col gap-2">
             <h2 className="font-bold text-5xl">Crie seu presente</h2>
             <p className="text-xl">
-              Selecione as funções que você vai querer <br /> no seu site.{" "}
+              Selecione as funções que você vai querer <br className="hidden md:block" /> no seu site.{" "}
               <span className="font-bold">Hora de soltar a criatividade!</span>
             </p>
           </div>
@@ -156,9 +207,9 @@ export default function Funcionalidades() {
           </button>
         </div>
 
-        <section className="flex flex-col lg:flex-row justify-between items-start gap-[10%] lg:gap-[20%] ">
-          {/* categorias */}
-          <div className="flex flex-col gap-2">
+        <section className="flex flex-col lg:flex-row justify-between items-start gap-[10%] lg:gap-[5%] grow lg:overflow-y-auto">
+          {/* Categorias */}
+          <div className="flex flex-col gap-2 lg:sticky top-0">
             <h2 className="font-bold text-4xl">Categorias</h2>
 
             {categorias.map((categoria) => (
@@ -181,9 +232,10 @@ export default function Funcionalidades() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 max-h-[53vh] overflow-y-auto">
-            {funcionalidades.length > 0 &&
-              funcionalidades.map((funcionalidade) => (
+          {/* Funcionalidades */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 w-full">
+            {filteredFuncionalidades.length > 0 &&
+              filteredFuncionalidades.map((funcionalidade) => (
                 <div
                   key={funcionalidade.id}
                   className="rounded-[40px] flex flex-col gap-2 p-6 aspect-square justify-between w-full min-h-[250px] h-full transition-transform transform hover:scale-105"
@@ -246,17 +298,19 @@ export default function Funcionalidades() {
                 </div>
               ))}
           </div>
+
         </section>
 
+        {/* Funcionalidades Selecionadas */}
         <div
-          className=" container mx-auto flex flex-col  items-center justify-center mt-4"
+          className="container mx-auto flex flex-col items-center justify-center my-8"
           style={{ zIndex: 9999 }}
         >
-          <div className="flex flex-row items-center justify-start w-full">
+          <div className="flex flex-col md:flex-row items-center justify-start w-full">
             <h3 className="me-4 font-bold text-3xl py-4">Selecionados:</h3>
-            <div className="flex flex-row gap-4 overflow-x-auto">
-              {funcionalidades.length > 0 &&
-                funcionalidades
+            <div className="flex flex-row gap-4 flex-wrap">
+              {funcionalidadesSelecionadas.length > 0 &&
+                funcionalidadesSelecionadas
                   .filter((item) => item.selecionado)
                   .map((funcionalidadeUsuario) => (
                     <div

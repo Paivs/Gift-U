@@ -8,34 +8,36 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    const amostrador = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show-gift");
-        } else {
-          entry.target.classList.add("hidden-gift");
-        }
+    if (typeof window !== "undefined") {
+      const amostrador = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-gift");
+          } else {
+            entry.target.classList.add("hidden-gift");
+          }
+        });
       });
-    });
 
-    const elementsAmostrador = document.querySelectorAll(".hidden-gift");
-    elementsAmostrador.forEach((el) => amostrador.observe(el));
+      const elementsAmostrador = document.querySelectorAll(".hidden-gift");
+      elementsAmostrador.forEach((el) => amostrador.observe(el));
 
-    const bolhas = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("bolha-pai");
-        }
+      const bolhas = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("bolha-pai");
+          }
+        });
       });
-    });
 
-    const elementsBolha = document.querySelectorAll(".bolhas");
-    elementsBolha.forEach((el) => bolhas.observe(el));
+      const elementsBolha = document.querySelectorAll(".bolhas");
+      elementsBolha.forEach((el) => bolhas.observe(el));
+    }
   }, []);
 
   return (
     <>
-      <Splash />
+      {/* <Splash /> */}
 
       {/* chamada */}
       <section className="min-h-[93vh] container mx-auto p-2 flex flex-col items-center justify-center">

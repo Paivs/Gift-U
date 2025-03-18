@@ -5,6 +5,8 @@ import QuebraCabeca from "./quebracabeca/quebracabeca";
 import Balao from "./balao/balao";
 import Link from "next/link";
 import { useMyContext } from "@/core/context/context";
+import Quiz from "./quiz/quiz";
+import Complete from "./complete/complete";
 
 export default function Personalizacao() {
   // <QuebraCabeca/>
@@ -42,6 +44,8 @@ export default function Personalizacao() {
   const componentesFuncionalidades = {
     "Quebra Cabeça": QuebraCabeca,
     "Balao": Balao,
+    "Quiz": Quiz,
+    "Complete a frase": Complete,
     // "Dado": Dado,
     // Vamos adicionando mais funções aqui
   };
