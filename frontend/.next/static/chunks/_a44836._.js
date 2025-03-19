@@ -443,7 +443,7 @@ function Funcionalidades() {
     }
     // Avança para a próxima etapa se pelo menos uma funcionalidade estiver selecionada
     function handleNextStep() {
-        if (funcionalidadesSelecionadas.length === 0) {
+        if (funcionalidadesSelecionadas.filter((funcionalidade)=>funcionalidade.selecionado).length <= 0) {
             showNotification("Selecione pelo menos uma funcionalidade", "error");
             return;
         }
@@ -459,7 +459,7 @@ function Funcionalidades() {
                 funcionalidade: selecionado
             }, void 0, false, {
                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                lineNumber: 184,
+                lineNumber: 186,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -476,7 +476,7 @@ function Funcionalidades() {
                                         children: "Crie seu presente"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                        lineNumber: 194,
+                                        lineNumber: 196,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -487,7 +487,7 @@ function Funcionalidades() {
                                                 className: "hidden md:block"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                lineNumber: 196,
+                                                lineNumber: 198,
                                                 columnNumber: 56
                                             }, this),
                                             " no seu site.",
@@ -497,19 +497,19 @@ function Funcionalidades() {
                                                 children: "Hora de soltar a criatividade!"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                lineNumber: 197,
+                                                lineNumber: 199,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                        lineNumber: 195,
+                                        lineNumber: 197,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                lineNumber: 193,
+                                lineNumber: 195,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -519,13 +519,13 @@ function Funcionalidades() {
                                 children: "Pronto"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                lineNumber: 201,
+                                lineNumber: 203,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                        lineNumber: 192,
+                        lineNumber: 194,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -539,7 +539,7 @@ function Funcionalidades() {
                                         children: "Categorias"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                        lineNumber: 213,
+                                        lineNumber: 215,
                                         columnNumber: 13
                                     }, this),
                                     categorias.map((categoria)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -554,7 +554,7 @@ function Funcionalidades() {
                                                         className: "w-auto h-6"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                        lineNumber: 222,
+                                                        lineNumber: 224,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -562,24 +562,24 @@ function Funcionalidades() {
                                                         children: categoria.descricao
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                        lineNumber: 227,
+                                                        lineNumber: 229,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                lineNumber: 217,
+                                                lineNumber: 219,
                                                 columnNumber: 17
                                             }, this)
                                         }, categoria.id, false, {
                                             fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                            lineNumber: 216,
+                                            lineNumber: 218,
                                             columnNumber: 15
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                lineNumber: 212,
+                                lineNumber: 214,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -611,7 +611,7 @@ function Funcionalidades() {
                                                                     fill: "none"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                                    lineNumber: 255,
+                                                                    lineNumber: 257,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -623,7 +623,7 @@ function Funcionalidades() {
                                                                     strokeWidth: "2"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                                    lineNumber: 263,
+                                                                    lineNumber: 265,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -633,18 +633,18 @@ function Funcionalidades() {
                                                                     fill: "currentColor"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                                    lineNumber: 271,
+                                                                    lineNumber: 273,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                            lineNumber: 249,
+                                                            lineNumber: 251,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                        lineNumber: 245,
+                                                        lineNumber: 247,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -659,13 +659,13 @@ function Funcionalidades() {
                                                         }, void 0, false)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                        lineNumber: 275,
+                                                        lineNumber: 277,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                lineNumber: 244,
+                                                lineNumber: 246,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -676,12 +676,12 @@ function Funcionalidades() {
                                                     className: "w-[7rem] h-auto object-contain"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                    lineNumber: 288,
+                                                    lineNumber: 290,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                lineNumber: 287,
+                                                lineNumber: 289,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -689,24 +689,24 @@ function Funcionalidades() {
                                                 children: funcionalidade.titulo
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                lineNumber: 295,
+                                                lineNumber: 297,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, funcionalidade.id, true, {
                                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                        lineNumber: 239,
+                                        lineNumber: 241,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                lineNumber: 236,
+                                lineNumber: 238,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                        lineNumber: 210,
+                        lineNumber: 212,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -722,7 +722,7 @@ function Funcionalidades() {
                                     children: "Selecionados:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                    lineNumber: 310,
+                                    lineNumber: 312,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -739,7 +739,7 @@ function Funcionalidades() {
                                                     className: "w-auto h-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                    lineNumber: 321,
+                                                    lineNumber: 323,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -747,7 +747,7 @@ function Funcionalidades() {
                                                     children: funcionalidadeUsuario.titulo
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                    lineNumber: 327,
+                                                    lineNumber: 329,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -762,35 +762,35 @@ function Funcionalidades() {
                                                     children: "X"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                                    lineNumber: 331,
+                                                    lineNumber: 333,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, funcionalidadeUsuario.id, true, {
                                             fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                            lineNumber: 316,
+                                            lineNumber: 318,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                                    lineNumber: 311,
+                                    lineNumber: 313,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                            lineNumber: 309,
+                            lineNumber: 311,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                        lineNumber: 305,
+                        lineNumber: 307,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/criar/funcionalidades/page.jsx",
-                lineNumber: 190,
+                lineNumber: 192,
                 columnNumber: 7
             }, this)
         ]

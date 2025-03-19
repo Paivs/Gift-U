@@ -4,6 +4,8 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { MyProvider } from "@/core/context/context";
 import { NotificationProvider } from "@/core/NotificationContext/NotificationContext";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
+import ThemeProvider from "@/core/ThemeProvider/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,17 +24,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MyProvider>
-          <NotificationProvider>
-            <Header />
-            {children}
-            <Footer />
-          </NotificationProvider>
-        </MyProvider>
+        <ThemeProvider>
+          <MyProvider>
+            <NotificationProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </NotificationProvider>
+          </MyProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -11,8 +11,8 @@ export const NotificationProvider = ({ children }) => {
   const [currentNotification, setCurrentNotification] = useState(null); // Notificação atual
 
   // Função para adicionar uma notificação à fila
-  const showNotification = (message, type = "danger", duration = 3000) => {
-    console.log("hi")
+  const showNotification = (message, type = "error", duration = 3000) => {
+    
     const id = Date.now(); // ID único para a notificação
     setQueue((prevQueue) => [
       ...prevQueue,

@@ -19,22 +19,26 @@ export default function Personalizacao() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log(userData)
-      if(userData.funcionalidades){
-        setFilaFuncionalidades(userData.funcionalidades); 
+      console.log(userData);
+      if (userData.funcionalidades) {
+        setFilaFuncionalidades(userData.funcionalidades);
+
+        console.log(userData.funcionalidades)
 
         setFuncionalidades(() => {
-          return Object.values(userData.funcionalidades).map((funcionalidade) => ({
-            id: funcionalidade.id,
-            imagem: funcionalidade.imagem,
-            titulo: funcionalidade.titulo,
-            selecionado: false
-          }))
-        })
+          return Object.values(userData.funcionalidades).map(
+            (funcionalidade) => ({
+              id: funcionalidade.id,
+              imagem: funcionalidade.imagem,
+              titulo: funcionalidade.titulo,
+              selecionado: false,
+            })
+          );
+        });
 
-        setFuncionalidades((prevState) => 
-          prevState.map((item) => 
-            item.id === 0 ? { ...item, selecionado: true } : { ...item, selecionado: false }
+        setFuncionalidades((prevState) =>
+          prevState.map((item, index) =>
+            index === 0 ? { ...item, selecionado: true } : item
           )
         );
       }
@@ -50,17 +54,25 @@ export default function Personalizacao() {
     // Vamos adicionando mais funções aqui
   };
 
-  
-  const ComponenteFuncionalidade = Object.values(filaFuncionalidades)[indice] ? componentesFuncionalidades[Object.values(filaFuncionalidades)[indice].titulo] : null;
-  
-  function handleCategoriaClick(id){
-    setIndice(id);
-    setFuncionalidades((prevState) => 
-      prevState.map((item) => 
-        item.id === id ? { ...item, selecionado: true } : { ...item, selecionado: false }
+  const ComponenteFuncionalidade = Object.values(filaFuncionalidades)[indice]
+    ? componentesFuncionalidades[
+        Object.values(filaFuncionalidades)[indice].titulo
+      ]
+    : null;
+
+  function handleCategoriaClick(id) {
+    
+    setFuncionalidades((prevState) =>
+      prevState.map((item) =>
+        item.id === id
+          ? { ...item, selecionado: true }
+          : { ...item, selecionado: false }
       )
     );
+    const index = funcionalidades.findIndex(item => item.id === id);
+    setIndice(index);
   }
+  
   return (
     <>
       <section className="min-h-[93vh] h-full container mx-auto px-8 flex flex-col">
@@ -111,9 +123,7 @@ export default function Personalizacao() {
 
           {/* funcionalidades em si */}
           <div className="w-full h-full">
-            
             {ComponenteFuncionalidade && <ComponenteFuncionalidade />}
-
           </div>
         </section>
       </section>

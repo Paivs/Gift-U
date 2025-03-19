@@ -169,7 +169,9 @@ export default function Funcionalidades() {
 
   // Avança para a próxima etapa se pelo menos uma funcionalidade estiver selecionada
   function handleNextStep() {
-    if (funcionalidadesSelecionadas.length === 0) {
+    
+    
+    if (funcionalidadesSelecionadas.filter(funcionalidade => funcionalidade.selecionado).length <= 0) {
       showNotification("Selecione pelo menos uma funcionalidade", "error");
       return;
     }

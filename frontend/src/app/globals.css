@@ -1,41 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-.font-standart-regular{
+.font-standart-regular {
   font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   /* font-weight: ; */
   font-style: normal;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
-:root {
-  --primary: #171717;
-  --primary-alt: #222;
-  --secondary: #f5f5f5;
-  --secondary-alt: #f2f2f2;
+:root{
   --accent: #7cf05f;
   --accent-hover: #54d085;
   --accent-active: #34b764;
-  --background: var(--primary);
-  --foreground: var(--secondary);
-  color: var(--foreground);
 
-  @apply font-standart-regular
-
+  @apply font-standart-regular;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #f5f5f5;
-    --foreground: #171717;
+[data-theme="dark"] {
+  --primary: #171717;
+  --primary-alt: #222;
 
-    @apply font-standart-regular
-  }
+  --secondary: #f5f5f5;
+  --secondary-alt: #f2f2f2;
+
+  --background: var(--primary);
+  --foreground: var(--secondary);
+
+  color: var(--secondary);
+}
+
+[data-theme="light"] {
+  --primary: #f5f5f5;
+  --primary-alt: #f2f2f2;
+
+  --secondary: #171717;
+  --secondary-alt: #222;
+
+  --background: var(--primary);
+  --foreground: var(--secondary);
+
+  color: var(--secondary);
 }
 
 body {
@@ -86,17 +97,17 @@ ul {
   background-color: var(--foreground);
 }
 
-.hidden-gift{
+.hidden-gift {
   opacity: 0;
   filter: blur(3px);
-  transition: all 1s .5 linear;
+  transition: all 1s 0.5 linear;
   transform: translateX(-50%);
 }
 
-.show-gift{
+.show-gift {
   opacity: 1;
   filter: blur(0);
-  transition: all .5s linear;
+  transition: all 0.5s linear;
   transform: translateX(0);
 }
 
@@ -143,7 +154,7 @@ ul {
 }
 
 @keyframes colorChange {
- 0% {
+  0% {
     background-color: var(--foreground);
   }
   100% {
@@ -151,4 +162,3 @@ ul {
     /* background-color: var(--accent); */
   }
 }
-

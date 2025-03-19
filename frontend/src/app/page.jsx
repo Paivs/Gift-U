@@ -162,7 +162,7 @@ export default function Home() {
             <div className="w-full flex items-center justify-center z-10 mt-4">
               <button
                 type="button"
-                className="px-4 py-2 rounded-full w-fit text-2xl text-background bg-[#2e2e2e]"
+                className="px-4 py-2 rounded-full w-fit text-2xl text-background bg-foreground"
               >
                 Criar meu site
               </button>
@@ -259,7 +259,7 @@ export default function Home() {
             <div className="w-full flex items-center justify-center z-10 mt-4">
               <button
                 type="button"
-                className="px-4 py-2 rounded-full w-fit text-2xl text-background bg-[#2e2e2e]"
+                className="px-4 py-2 rounded-full w-fit text-2xl text-background bg-foreground"
               >
                 Quero presentear
               </button>
@@ -294,7 +294,7 @@ export default function Home() {
       </section> */}
 
       {/* planos */}
-      <section className="min-h-[93vh] container mx-auto p-2 flex flex-col items-center justify-center">
+      <section className="min-h-[93vh] container mx-auto p-2 flex flex-col items-center justify-center" id="planos">
         <div className="flex flex-col gap-2 items-center justify-center px-8 hidden-gift">
           <h2 className="text-6xl font-bold mb-2">Planos</h2>
           <p className="text-xl">
@@ -339,5 +339,5 @@ export default function Home() {
         </div>
       </section>
     </>
-  );
+  )
 }

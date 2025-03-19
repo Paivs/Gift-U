@@ -3,7 +3,7 @@ const runtime = require("../../../chunks/ssr/[turbopack]_runtime.js");
 runtime.loadChunk("server/chunks/ssr/node_modules_next_dist_97f32f._.js");
 runtime.loadChunk("server/chunks/ssr/[root of the server]__592060._.js");
 runtime.loadChunk("server/chunks/ssr/src_app_896cde._.js");
-runtime.loadChunk("server/chunks/ssr/[root of the server]__9d5c68._.js");
+runtime.loadChunk("server/chunks/ssr/[root of the server]__f2bad1._.js");
 runtime.loadChunk("server/chunks/ssr/[root of the server]__36bd7e._.css");
 runtime.loadChunk("server/chunks/ssr/src_components_splash_splash_cfb71a.css");
 runtime.loadChunk("server/chunks/ssr/src_9ea9cb._.js");

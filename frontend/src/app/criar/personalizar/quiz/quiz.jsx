@@ -126,6 +126,7 @@ export default function Quiz() {
                     id={`pergunta0${selectedQuestion}`}
                     name={`pergunta0${selectedQuestion}`}
                     value={perguntas[selectedQuestion].pergunta}
+                    placeholder="Digite o enunciado aqui"
                     className="w-full px-1 rounded-standart"
                     onChange={(e) => handleLabelChange(selectedQuestion, e.target.value)}
                   />
@@ -156,6 +157,7 @@ export default function Quiz() {
                           id={`resposta0${indexResposta}`}
                           className="w-full px-1 pe-12 rounded-standart py-2"
                           name={`resposta0${indexResposta}`}
+                          placeholder={`Resposta ${indexResposta + 1}`}
                           value={resposta}
                           onChange={(e) =>
                             handleAnswerChange(

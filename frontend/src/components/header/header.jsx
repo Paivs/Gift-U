@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Button from "../button/button";
 import HamburguerButton from "./hamburguerButton/hamburguerButton";
+import Link from "next/link";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,19 +31,22 @@ export default function Header() {
 
           <ul className="hidden lg:flex flex-row gap-7 text-base font-medium items-center">
             <li>
-              <a href="">Planos</a>
+              <Link href="/#planos">
+                Planos
+              </Link>
             </li>
             <li>
-              <a href="">Contato</a>
-            </li>
-            <li>
-              <a href="">Central de ajuda</a>
+              <Link href="/faq">
+                Central de ajuda
+              </Link>
             </li>
             <Button
               message={"Criar meu site"}
               href="/criar/funcionalidades"
               applyClass="px-4 text-background rounded-standart py-2"
             />
+
+            <ThemeToggle />
           </ul>
 
           <div className="lg:hidden flex flex-col items-end gap-4">
@@ -48,13 +54,13 @@ export default function Header() {
             {isOpen && (
               <ul className="flex flex-col gap-2 text-base font-medium items-end">
                 <li>
-                  <a href="">Planos</a>
+                  <Link href="/#planos">Planos</Link>
                 </li>
                 <li>
-                  <a href="">Contato</a>
+                  <Link href="/contato">Contato</Link>
                 </li>
                 <li>
-                  <a href="">Central de ajuda</a>
+                  <Link href="/faq">Central de ajuda</Link>
                 </li>
                 <Button
                   message={"Criar meu site"}
