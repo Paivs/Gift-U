@@ -1,0 +1,15 @@
+.puzzlePiece {
+  position: absolute;
+  width: 100px;  /* Ajuste conforme necessário */
+  height: 100px; /* Ajuste conforme necessário */
+  cursor: grab;
+  /* Outros estilos para a peça */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Adiciona uma borda sutil */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+  transition: transform 0.2s ease-in-out; /* Transição suave no movimento */
+}
+
+.puzzlePiece:hover {
+  transform: scale(1.05); /* Aumenta um pouco no hover */
+  z-index: 10; /* Garante que a peça fique na frente */
+}

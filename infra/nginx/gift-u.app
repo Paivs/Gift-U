@@ -1,9 +1,8 @@
-# Redirecionamento de HTTP para HTTPS
 server {
     listen 80;
     server_name gift-u.app www.gift-u.app;
 
-    #de http para https	
+    #de http para https
     return 301 https://$host$request_uri;
 }
 
@@ -29,7 +28,7 @@ server {
 
     # Configuração para a aplicação Next.js na porta 3003 GIFT-U
     location / {
-        proxy_pass http://localhost:3003;  # Serve a aplicação Next.js na porta 3001
+        proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -37,9 +36,9 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-	
+
     location /api {
-        proxy_pass http://localhost:8080;                                                                
+        proxy_pass http://localhost:8080;                                       
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -66,5 +65,3 @@ server {
         deny all;
     }
 }
-
-
