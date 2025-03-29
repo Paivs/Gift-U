@@ -44,7 +44,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between px-8 hidden-gift">
           <div className="flex flex-col gap-4 ">
             <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl text-center md:text-left">
-              Um jeito criativo de dar presentes!
+              Um jeito criativo de dar presentes!!!
             </h2>
 
             {/* <p className="text-xl">
