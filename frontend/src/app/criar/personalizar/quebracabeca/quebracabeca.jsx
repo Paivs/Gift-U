@@ -1,4 +1,6 @@
 "use client";
+
+import { useMyContext } from "@/core/context/context";
 import { useState, useRef } from "react";
 import Imagem from "./Imagem";
 
@@ -37,6 +39,33 @@ export default function QuebraCabeca() {
 
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null); // Estado para armazenar o arquivo selecionado
+  // const { userData, updateFuncionalidade} = useMyContext();
+
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     if (userData.funcionalidades) {
+  //       const funcionalidade = userData.funcionalidades.find(
+  //         (funcionalidade) => funcionalidade.id === 0
+  //       );
+
+  //       console.log(funcionalidade);
+
+  //       if(funcionalidade.perguntas) {
+  //         setPerguntas(funcionalidade.perguntas);
+  //         setChances(funcionalidade.chances);
+  //       }
+  //     }
+
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     updateFuncionalidade(2, "perguntas", perguntas);
+  //     updateFuncionalidade(2, "chances", chances);
+  //   }
+  // }, [perguntas, chances]);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -71,7 +100,7 @@ export default function QuebraCabeca() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col gap-4">
+    <div className="w-full h-full flex flex-col gap-4 ">
       {/* upload da iamgem */}
       {step == 0 ? (
         <>
@@ -93,7 +122,7 @@ export default function QuebraCabeca() {
 
           {/* drag and drop */}
           <div
-            className="grow h-full w-full rounded-[50px] border-4 border-gray-300 flex flex-col gap-2 items-center justify-center p-4 md:min-h-[40vh]"
+            className="grow w-full rounded-[50px] border-4 border-gray-300 flex flex-col gap-2 items-center justify-center p-4"
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleDrop}
             onClick={handleClick}

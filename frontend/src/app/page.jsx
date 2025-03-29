@@ -269,32 +269,66 @@ export default function Home() {
       </section>
 
       {/* funcoes disponiveis */}
-      {/* <section className="min-h-[93vh] flex flex-col items-center bg-[#f7f1f1]">
+      <section className="min-h-[60vh] flex flex-col items-center justify-center bg-[#f7f1f1]">
         <div className="container mx-auto my-8 p-2 flex flex-col">
-          <div className="flex flex-col items-center justify-center md:flex-row gap-24 overflow-visible px-8 hidden-gift">
-            
+          <div className="flex flex-col overflow-visible px-8 hidden-gift gap-8">
             <div className="flex flex-col gap-2 items-center justify-center">
               <div className="flex gap-2 items-center">
                 <h2 className="text-6xl font-bold">Funções disponíveis</h2>
-                <img src="\img\funcionalidades\certo.png" alt="certinho" className="h-10" />
+                <img
+                  src="\img\funcionalidades\certo.png"
+                  alt="certinho"
+                  className="h-10"
+                />
               </div>
 
-              <p className="text-2xl"> Explore algumas das nossas {" "} <span className="font-bold">+25 funções!</span></p>
+              <p className="text-2xl">
+                {" "}
+                Explore algumas das nossas{" "}
+                <span className="font-bold">+25 funções!</span>
+              </p>
             </div>
 
-            <div className="flex flex-row gap-4">
-              
-              <div className="min-w-[50%] min-h-[50%] bg-foreground">
-                oi
+            <div className="flex gap-16 justify-center">
+              <div className="rounded-standart bg-foreground w-[600px] h-[300px]"></div>
+              <div className="flex flex-col items-center justify-center">
+                <ul className="flex flex-col gap-4">
+                  <li className="flex gap-2 items-center">
+                    <img
+                      className=" w-auto h-16"
+                      src="\img\funcionalidades\coracao.png"
+                      alt=""
+                    />
+                    <span className="text-2xl font-bold">Aos apaixonados</span>
+                  </li>
+                  <li className="flex gap-2 items-center">
+                    <img
+                      className=" w-auto h-16"
+                      src="\img\funcionalidades\jogos.png"
+                      alt=""
+                    />
+                    <span className="text-2xl font-bold">Jogos</span>
+                  </li>
+                  <li className="flex gap-2 items-center">
+                    <img
+                      className=" w-auto h-16"
+                      src="\img\funcionalidades\aniversario.png"
+                      alt=""
+                    />
+                    <span className="text-2xl font-bold">Aniversário</span>
+                  </li>
+                </ul>
               </div>
-
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* planos */}
-      <section className="min-h-[93vh] container mx-auto p-2 flex flex-col items-center justify-center" id="planos">
+      <section
+        className="min-h-[93vh] container mx-auto p-2 flex flex-col items-center justify-center"
+        id="planos"
+      >
         <div className="flex flex-col gap-2 items-center justify-center px-8 hidden-gift">
           <h2 className="text-6xl font-bold mb-2">Planos</h2>
           <p className="text-xl">
@@ -338,6 +372,61 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* algumas reações */}
+      <section className="min-h-[93vh] flex flex-col justify-center items-center bg-[#DBCDFF]">
+        <div className="container mx-auto my-8 p-2 flex flex-col">
+          <div className="flex flex-col overflow-visible px-8 hidden-gift gap-8">
+            <div className="flex flex-col gap-2 items-center justify-center">
+              <div className="flex gap-2 items-center">
+                <h2 className="text-6xl font-bold">Algumas reações</h2>
+              </div>
+
+              <p className="text-2xl flex gap-2">
+                Presente para os apaixonados, amigos, família{" "}
+                <img
+                  src="\img\funcionalidades\presente.png"
+                  alt="ícone de presente"
+                  className="h-10"
+                />
+              </p>
+            </div>
+
+            <div className="flex gap-16 items-center justify-center">
+              <div className="flex flex-col items-center justify-center gap-4 p-6 bg-white rounded-standart">
+                <img
+                  src="\img\funcionalidades\coracao.png"
+                  alt="ícone de coração"
+                  className="h-20"
+                />
+
+                <div className="rounded-standart bg-foreground w-[250px] h-[300px] bg-black"></div>
+                {/* <video src="\video\funcionalidades\presente.mp4"></video> */}
+              </div>
+              <div className="flex flex-col items-center justify-center gap-4 p-6 bg-white rounded-standart">
+                <img
+                  src="\img\funcionalidades\balao.png"
+                  alt="ícone de coração"
+                  className="h-20"
+                />
+
+                <div className="rounded-standart bg-foreground w-[250px] h-[300px] bg-black"></div>
+                {/* <video src="\video\funcionalidades\presente.mp4"></video> */}
+              </div>
+              <div className="flex flex-col items-center justify-center gap-4 p-6 bg-white rounded-standart">
+                <img
+                  src="\img\funcionalidades\abraco.png"
+                  alt="ícone de coração"
+                  className="h-20"
+                />
+
+                <div className="rounded-standart bg-foreground w-[250px] h-[300px] bg-black"></div>
+                {/* <video src="\video\funcionalidades\presente.mp4"></video> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
-  )
+  );
 }

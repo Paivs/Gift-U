@@ -44,8 +44,7 @@ export default function Complete() {
 
   // Função para remover uma tag
   const selectTag = (tagIdToSelect) => {
-
-    if(selectedTags.length > 0 && selectedTags.includes(tagIdToSelect)){
+    if (selectedTags.length > 0 && selectedTags.includes(tagIdToSelect)) {
       setSelectedTags(selectedTags.filter((tag) => tag !== tagIdToSelect));
     }
 
@@ -60,7 +59,14 @@ export default function Complete() {
           <div className="flex flex-row gap-6 items-center">
             <div className="flex flex-row gap-6">
               <span className="text-4xl font-bold">1.</span>
-              <h2 className="text-4xl">Crie as perguntas</h2>
+              <div className="flex flex-col">
+                <h2 className="text-4xl">Escreva a frase</h2>
+                <p className="text-xl text-gray-400">
+                  Após escrever e dar um espaço a palavra é contabilizada. Ao
+                  clicar nela a palavra é selecionada e seu presenteado terá que
+                  acertar!{" "}
+                </p>
+              </div>
             </div>
             {/* <img
               src="/img/funcionalidades/quiz.png"
@@ -75,7 +81,9 @@ export default function Complete() {
               {tags.map((tag, index) => (
                 <button
                   key={index}
-                  className={`flex items-center bg-gray-200 rounded-lg px-2 py-1 m-1 text-sm hover:bg-gray-300 transition-colors ${selectedTags.includes(tag) ? "bg-blue-500 text-white" : ""}`}
+                  className={`flex items-center bg-gray-200 rounded-lg px-2 py-1 m-1 text-sm hover:bg-gray-300 transition-colors ${
+                    selectedTags.includes(tag) ? "bg-blue-500 text-white" : ""
+                  }`}
                   onClick={() => selectTag(tag)}
                 >
                   {tag}

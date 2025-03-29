@@ -24,12 +24,16 @@ export function MyProvider({ children }) {
   }, [userData]);
 
   // Função genérica para atualizar qualquer campo do userData
-  const updateUserData = (key, value) => {
+  const updateFuncionalidade = (id, campo, valor) => {
     setUserData((prevUserData) => ({
       ...prevUserData,
-      [key]: value, // Atualiza a chave específica com o novo valor
+      funcionalidades: prevUserData.funcionalidades.map((funcionalidade) =>
+        funcionalidade.id === id ? { ...funcionalidade, [campo]: valor } : funcionalidade
+      ),
     }));
-  };
+  }
+
+
 
   // Método para adicionar uma funcionalidade ao userData
   const addFuncionalidade = (novaFuncionalidade) => {
@@ -53,7 +57,7 @@ export function MyProvider({ children }) {
   // Valor do contexto
   const contextValue = {
     userData,
-    updateUserData,
+    updateFuncionalidade,
     addFuncionalidade,
     removeFuncionalidade
   };

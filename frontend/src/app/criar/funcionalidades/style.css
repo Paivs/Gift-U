@@ -2,12 +2,12 @@
     background: linear-gradient(to bottom, rgba(255,255,255,0.1), white);
 }
 @media (min-width: 1024px) {
-    section {
+  .tela {
       height: calc(100vh - 74px);
     }
   }
   @media (max-width: 767px) {
-    section {
-      min-height: 100vh;
+    .tela {
+      min-height: 100vh - 74px;
     }
   }

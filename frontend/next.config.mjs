@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  devIndicators: {
+    autoPrerender: true,
+  }
+};
 
 export default nextConfig;
+

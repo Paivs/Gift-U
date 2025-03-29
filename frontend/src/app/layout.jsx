@@ -3,8 +3,7 @@ import "./globals.css";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { MyProvider } from "@/core/context/context";
-import { NotificationProvider } from "@/core/NotificationContext/NotificationContext";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
+import { Toaster, toast } from "sonner";
 import ThemeProvider from "@/core/ThemeProvider/ThemeProvider";
 
 const geistSans = Geist({
@@ -30,11 +29,10 @@ export default function RootLayout({ children }) {
       >
         <ThemeProvider>
           <MyProvider>
-            <NotificationProvider>
+            <Toaster richColors position="top-center" expand={true}/>
               <Header />
               <main>{children}</main>
               <Footer />
-            </NotificationProvider>
           </MyProvider>
         </ThemeProvider>
       </body>

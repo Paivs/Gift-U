@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import "./styles.css"
 import QuebraCabeca from "./quebracabeca/quebracabeca";
 import Balao from "./balao/balao";
 import Link from "next/link";
@@ -75,9 +76,9 @@ export default function Personalizacao() {
   
   return (
     <>
-      <section className="min-h-[93vh] h-full container mx-auto px-8 flex flex-col">
+      <section className="tela container mx-auto px-8 flex flex-col">
         {/* chamada */}
-        <div className="flex flex-col md:flex-row justify-between items-center my-8">
+        <div className="flex flex-col md:flex-row justify-between items-center my-4">
           <div className="flex flex-col">
             <h2 className="font-bold text-5xl">Personalize seu site</h2>
             <p className="text-xl">
@@ -95,7 +96,7 @@ export default function Personalizacao() {
           </Link>
         </div>
 
-        <section className="flex flex-col lg:flex-row justify-between items-start gap-[20%] h-full">
+        <section className="flex flex-col lg:flex-row justify-between items-start gap-4 md:gap-[10%] lg:gap-[15%] grow">
           {/* categorias */}
           <div className="flex flex-col gap-2">
             <h2 className="font-bold text-4xl">Selecionados</h2>
@@ -122,7 +123,7 @@ export default function Personalizacao() {
           </div>
 
           {/* funcionalidades em si */}
-          <div className="w-full h-full">
+          <div className="w-full grow">
             {ComponenteFuncionalidade && <ComponenteFuncionalidade />}
           </div>
         </section>

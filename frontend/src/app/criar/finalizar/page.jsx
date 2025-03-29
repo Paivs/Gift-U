@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useMyContext } from "@/core/context/context";
 
 export default function Finalizar() {
   const [dispositivo, setDispositivo] = useState("mobile");
@@ -43,6 +44,27 @@ export default function Finalizar() {
     },
   ]);
 
+  const { userData } = useMyContext();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log(userData);
+    }
+  }, []);
+
+  const handleCategoriaClick = (id) => {
+    setFuncionalidades((prevFuncionalidades) =>
+      prevFuncionalidades.map((func) =>
+        func.id === id ? { ...func, selecionado: !func.selecionado } : func
+      )
+    );
+  };
+
+  const handleMove = (direction) => {
+    // Lógica para navegar entre layouts
+    console.log(`Moving ${direction > 0 ? "forward" : "backward"}`);
+  };
+
   return (
     <>
       <main className="min-h-[93vh] h-full container mx-auto px-8 flex flex-col">
@@ -70,19 +92,19 @@ export default function Finalizar() {
           <div className="flex flex-col gap-2">
             <h2 className="font-bold text-4xl">Adicionais</h2>
 
-            {Object.entries(funcionalidades).map(([key, funcionalidade]) => (
+            {funcionalidades.map((funcionalidade) => (
               <button
                 type="button"
-                key={key}
+                key={funcionalidade.id}
                 className="flex flex-row gap-2"
-                onClick={() => {
-                  handleCategoriaClick(funcionalidade.id);
-                }}
+                onClick={() => handleCategoriaClick(funcionalidade.id)}
               >
                 <img
                   src={`/img/funcionalidades/${funcionalidade.titulo}.png`}
                   alt={funcionalidade.titulo}
                   className="w-auto h-6"
+                  width={24}
+                  height={24}
                 />
                 <span className={funcionalidade.selecionado ? "font-bold" : ""}>
                   {funcionalidade.descricao}
@@ -102,35 +124,29 @@ export default function Finalizar() {
               </div>
 
               <div className="flex flex-row gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setDispositivo("mobile");
-                  }}
-                >
+                <button type="button" onClick={() => setDispositivo("mobile")}>
                   <img
                     src="/img/funcionalidades/celular.png"
-                    alt=""
+                    alt="Mobile"
                     className={`w-auto h-12 ${
                       dispositivo === "mobile" ? "" : "bg-gray-100 opacity-50"
                     }`}
+                    width={48}
+                    height={48}
                   />
                 </button>
 
                 <div className="w-[0.20rem] bg-foreground"></div>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setDispositivo("desktop");
-                  }}
-                >
+                <button type="button" onClick={() => setDispositivo("desktop")}>
                   <img
                     src="/img/funcionalidades/desktop.svg"
-                    alt=""
+                    alt="Desktop"
                     className={`w-auto h-12 ${
                       dispositivo === "desktop" ? "" : "bg-gray-100 opacity-50"
                     }`}
+                    width={48}
+                    height={48}
                   />
                 </button>
               </div>
@@ -138,7 +154,11 @@ export default function Finalizar() {
 
             {/* layouts */}
             <div className="h-full flex grow py-8">
-              <button type="button" className="text-7xl">
+              <button
+                type="button"
+                className="text-7xl"
+                onClick={() => handleMove(-1)}
+              >
                 {" "}
                 &#60;{" "}
               </button>
@@ -147,7 +167,11 @@ export default function Finalizar() {
                 <div className="h-[75%] rounded-standart w-[25%] absolute left-1/2 z-0 translate-x-1/2 top-1/2 bg-slate-400 transform -translate-y-1/2"></div>
                 <div className="h-[75%] rounded-standart w-[25%] absolute top-1/2 translate-x-1/2 bg-slate-400 transform -translate-y-1/2"></div>
               </div>
-              <button type="button" className="text-7xl">
+              <button
+                type="button"
+                className="text-7xl"
+                onClick={() => handleMove(1)}
+              >
                 {" "}
                 &#62;{" "}
               </button>
@@ -157,18 +181,14 @@ export default function Finalizar() {
               <button
                 type="button"
                 className="font-bold text-3xl py-2 px-4 rounded-standart text-background bg-foreground"
-                onClick={() => {
-                  handleMove(-1);
-                }}
+                onClick={() => handleMove(-1)}
               >
                 &#60; Voltar
               </button>
               <button
                 type="button"
                 className="font-bold text-3xl py-2 px-4 rounded-standart text-background bg-foreground"
-                onClick={() => {
-                  handleMove(1);
-                }}
+                onClick={() => handleMove(1)}
               >
                 Próximo &#62;
               </button>

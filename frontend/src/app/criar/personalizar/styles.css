@@ -1,0 +1,10 @@
+@media (min-width: 1024px) {
+  .tela {
+    min-height: calc(100vh - 100px);
+  }
+}
+@media (max-width: 767px) {
+  .tela {
+    min-height: calc(100vh - 74px);
+  }
+}

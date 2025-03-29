@@ -5,40 +5,38 @@ import Button from "../button/button";
 import HamburguerButton from "./hamburguerButton/hamburguerButton";
 import Link from "next/link";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-
+import { useTheme } from 'next-themes';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <>
       <div className="container p-2 mx-auto px-8">
         <header className="flex items-start lg:items-center justify-between p-2 pb-4 border-b-2 border-gray-400">
-          <a href="/" className="block dark:hidden">
+          <Link href="/">
+          {theme === 'dark' ? (
             <img
-              src="/logo-dark.png"
-              className="h-9 w-auto sm:h-12 block dark:hidden"
-              alt="logo da Gift U"
+              src={"/logo-dark.png"}
+              className="h-9 w-auto sm:h-12"
+              alt="Logo da Gift U"
             />
-          </a>
-          <a href="/" className="hidden dark:block">
+          ) : (
             <img
-              src="/logo.png"
-              className="h-9 w-auto sm:h-12 hidden dark:block"
-              alt="logo da Gift U"
+              src={"/logo.png"}
+              className="h-9 w-auto sm:h-12"
+              alt="Logo da Gift U"
             />
-          </a>
+          )}
+          </Link>
 
           <ul className="hidden lg:flex flex-row gap-7 text-base font-medium items-center">
             <li>
-              <Link href="/#planos">
-                Planos
-              </Link>
+              <Link href="/#planos">Planos</Link>
             </li>
             <li>
-              <Link href="/faq">
-                Central de ajuda
-              </Link>
+              <Link href="/faq">Central de ajuda</Link>
             </li>
             <Button
               message={"Criar meu site"}

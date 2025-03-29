@@ -5,18 +5,13 @@ import funcionalidadesDados from "../../../../public/dados/funcionalidades.json"
 import "./style.css";
 import ModalFuncao from "./modalFuncao/modalFuncao";
 import { useMyContext } from "@/core/context/context";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Notification from "@/components/notification/Notification";
-import { useNotification } from "@/core/NotificationContext/NotificationContext";
 
 export default function Funcionalidades() {
   const router = useRouter();
-
-  const { showNotification } = useNotification();
-  const { userData, updateUserData, addFuncionalidade, removeFuncionalidade } =
-    useMyContext();
-  const [notification, setNotification] = useState({
+  const { userData, addFuncionalidade, removeFuncionalidade } = useMyContext();
+  
+    const [notification, setNotification] = useState({
     message: "",
     type: "",
   });
@@ -189,7 +184,7 @@ export default function Funcionalidades() {
         funcionalidade={selecionado}
       />
 
-      <section className="container mx-auto px-8 flex flex-col" >
+      <section className="tela container mx-auto px-8 flex flex-col" >
         {/* Chamada */}
         <div className="flex flex-col md:flex-row justify-between items-center my-8 gap-2">
           <div className="flex flex-col gap-2">

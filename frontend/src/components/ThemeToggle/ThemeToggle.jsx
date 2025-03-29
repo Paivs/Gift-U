@@ -16,7 +16,6 @@ const Switch = () => {
   // Garante que o tema inicial seja "light"
   useEffect(() => {
     setMounted(true);
-    setTheme("light");
   }, [setTheme]);
 
   if (!mounted) {

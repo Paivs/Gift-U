@@ -1,6 +1,7 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import ConjuntoBalao from "./conjuntoBalao";
+import { useMyContext } from "@/core/context/context";
 
 export default function Balao() {
   const [step, setStep] = useState(0);
@@ -8,6 +9,7 @@ export default function Balao() {
   const maxIndex = 2;
   const minIndex = 0;
 
+  const [nome, setNome] = useState(0);
   const [idade, setIdade] = useState(0);
 
   const [baloes, setBaloes] = useState([
@@ -16,6 +18,32 @@ export default function Balao() {
       cor: "#FF0000",
     },
   ]);
+
+  const { userData, updateFuncionalidade } = useMyContext();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (userData.funcionalidades) {
+        const funcionalidade = userData.funcionalidades.find(
+          (funcionalidade) => funcionalidade.id === 1
+        );
+
+        console.log(funcionalidade);
+
+        if (funcionalidade.baloes) setBaloes(funcionalidade.baloes);
+        if (funcionalidade.nome) setNome(funcionalidade.nome);
+        if (funcionalidade.idade) setIdade(funcionalidade.idade);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      updateFuncionalidade(1, "baloes", baloes);
+      updateFuncionalidade(1, "nome", nome);
+      updateFuncionalidade(1, "idade", idade);
+    }
+  }, [baloes, nome, idade]);
 
   function handleMove(i) {
     const newStep = Math.min(Math.max(step + i, minIndex), maxIndex);
@@ -45,9 +73,7 @@ export default function Balao() {
           <div className="flex flex-row gap-6 items-center">
             <div className="flex flex-row gap-6">
               <span className="text-4xl font-bold">1.</span>
-              <h2 className="text-4xl">
-                Quantos anos <br />o presenteado fará?
-              </h2>
+              <h2 className="text-4xl">Algumas informações</h2>
             </div>
             <img
               src="/img/funcionalidades/balao.png"
@@ -56,19 +82,35 @@ export default function Balao() {
             />
           </div>
 
-          <div className="grow h-full w-full flex flex-col gap-2 rounded-[20px] p-4 md:min-h-[40vh]">
-            <input
-              type="number"
-              className="px-2 py-1 rounded-standart text-4xl"
-              min={1}
-              max={120}
-              step={1}
-              value={idade}
-              onChange={(e) => setIdade(e.target.value)}
-              name=""
-              id=""
-              placeholder="Digite aqui a idade"
-            />
+          <div className="grow h-full w-full flex flex-col gap-4 rounded-[20px] p-4 md:min-h-[40vh]">
+            <label htmlFor="nome" className="flex flex-col gap-2 items-start">
+              <span className="text-2xl font-bold">Nome:</span>
+              <input
+                type="text"
+                className="px-2 py-1 rounded-standart text-2xl w-full"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                name=""
+                id=""
+                placeholder="Digite aqui o nome"
+              />
+            </label>
+
+            <label htmlFor="idade" className="flex flex-col gap-2 items-start">
+              <span className="text-2xl font-bold">Idade:</span>
+              <input
+                type="number"
+                className="px-2 py-1 rounded-standart text-2xl w-full"
+                min={1}
+                max={120}
+                step={1}
+                value={idade}
+                onChange={(e) => setIdade(e.target.value)}
+                name=""
+                id=""
+                placeholder="Digite aqui a idade"
+              />
+            </label>
           </div>
         </>
       ) : null}
