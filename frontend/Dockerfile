@@ -1,4 +1,4 @@
-# Usa a imagem oficial do Node.js
+# Usa a imagem oficial do Node.js Dockerfile
 FROM node:18-alpine AS builder
 WORKDIR /app
 
