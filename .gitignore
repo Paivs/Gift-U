@@ -78,3 +78,7 @@ build/
 ### VS Code ###
 .vscode/
 
+/backend/IA/node_modules
+
+/backend/API/target
+

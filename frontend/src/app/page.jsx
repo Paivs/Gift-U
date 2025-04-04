@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import Button from "@/components/button/button";
 import PricingCard from "@/components/pricingCard/pricingCard";
 import Splash from "@/components/splash/splash";
 import WordLoader from "@/components/WordLoader/WordLoader";
+import FirebaseService from "@/core/services/FirebaseService";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -56,11 +58,12 @@ export default function Home() {
               <WordLoader />
             </div>
 
-            <Button
-              message={"Começar"}
-              applyClass={"hidden md:block py-2 text-xl"}
+            <Link
               href="/criar/funcionalidades"
-            />
+              className={`hidden md:block py-2 text-xl z-30 text-center bg-foreground rounded-md text-background relative font-semibold after:-z-20 after:absolute after:h-1 after:w-1 after:bg-accent after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700`}
+            >
+              Comecar
+            </Link>
           </div>
 
           <div className="overflow-visible relative">
@@ -83,11 +86,13 @@ export default function Home() {
             />
           </div>
 
-          <Button
-            message={"Começar"}
-            applyClass={"w-full my-4 py-2 text-xl md:hidden"}
+          <Link
             href="/criar/funcionalidades"
-          />
+            className={`w-full my-4 py-2 text-xl md:hidden z-30 text-center bg-foreground rounded-md text-background relative font-semibold after:-z-20 after:absolute after:h-1 after:w-1 after:bg-accent after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700`}
+          >
+            Comecar
+          </Link>
+          
         </div>
       </section>
 
