@@ -84,3 +84,4 @@ build/
 
 /testes
 
+/backend/API/src/main/resources/application.properties
